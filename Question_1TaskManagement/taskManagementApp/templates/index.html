@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+</head>
+<body>
+    <h1>Enter your Tasks</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input class= "btn btn-primary"  type="submit" name="Submit">
+        </form>
+
+    <h1>Your Activity Report</h1>
+
+    <table class="table table-sm">
+        <tr>
+            <th></th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+
+        {% for tasks in task %}
+        <tr>
+            <th></th>
+            <td>{{tasks.priority}}</td>
+            <td>{{tasks.status}}</td>
+            <td>{{tasks.date}}</td> 
+        </tr>
+        {% endfor %}
+
+</body>
+</html>
